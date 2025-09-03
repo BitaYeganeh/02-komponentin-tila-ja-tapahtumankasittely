@@ -60,15 +60,17 @@ const App = () => {
   };
 
   //Left-Right handlers
-  const handleLeftClick =() => {
-  setClicks({...clicks, left: clicks.left + 1});
-  setAllClicks(allClicks.concat("L"));
-  };
-  
-  const handleRightClick = () => {
-  setClicks({...clicks, right:clicks.right + 1});
-  setAllClicks(allClicks.concat("R"));
+const handleLeftClick = () => {
+  setAllClicks([...allClicks, 'L']); // create a new array
+  setClicks({ ...clicks, left: clicks.left + 1 });
 };
+
+const handleRightClick = () => {
+  setAllClicks([...allClicks, 'R']); // create a new array
+  setClicks({ ...clicks, right: clicks.right + 1 });
+};
+
+
  
 
   return (
