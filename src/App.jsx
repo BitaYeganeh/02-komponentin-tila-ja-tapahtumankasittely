@@ -42,6 +42,10 @@ const App = () => {
   //Array to track all clicks (array task)
   const [allClicks, setAllClicks] = useState([]);
 
+  //total counter
+  const [total, setTotal] = useState(0);
+
+
     //Main Handlers - counter:
   const increaseByOne = () => {
         console.log("Increaseing, value before", counter);
@@ -63,12 +67,17 @@ const App = () => {
 const handleLeftClick = () => {
   setAllClicks([...allClicks, 'L']); // create a new array
   setClicks({ ...clicks, left: clicks.left + 1 });
+
+setTotal(prevTotal => prevTotal + 1)
 };
 
 const handleRightClick = () => {
   setAllClicks([...allClicks, 'R']); // create a new array
   setClicks({ ...clicks, right: clicks.right + 1 });
+setTotal(prevTotal => prevTotal + 1)
 };
+
+
 
 
  
@@ -82,6 +91,9 @@ const handleRightClick = () => {
 
         <p>Right counter: <Display counter={clicks.right} /></p>
         <Button onClick= {handleRightClick} text="Right" />
+
+      {/* Total pressed after left/right buttons */}
+      <p>Total buttons pressed: {total}</p>
       </div>
 
       <hr />
@@ -91,7 +103,7 @@ const handleRightClick = () => {
       <Button onClick={increaseByOne} text="Plus" />
       <Button onClick={setToZero} text="Zero" />
       <Button onClick={decreaseByOne} text="Minus" />
-
+      
       <hr />
 
             {/* History */}
@@ -99,6 +111,7 @@ const handleRightClick = () => {
       <hr />
       {/* All clicks array */}
       <p>All clicks: {allClicks.join("")}</p>
+     
     </div>
   );
 };
